@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 
+/* Lets player pick up items       */
+/* Code: Corinna Pfarr             */
+
 public class ItemPickup : Interactable
 {
     public Item item;
-    
 
     public override void Interact()
     {
-        //executes code of base Interact() method
         base.Interact();
 
         PickUp();
-        
+
     }
 
-    //picks up Item
+    //Picks up an item and removes it from scene
     void PickUp()
     {
         Debug.Log("Picking up" + item.name);
@@ -22,6 +23,6 @@ public class ItemPickup : Interactable
 
         //if succesfully picked up
         if (wasPickedUp)
-             Destroy(gameObject);     //Remove item from scene
+            Destroy(gameObject);
     }
 }

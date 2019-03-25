@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/* Code partly of Brackeys Youtube Tutorial 
+ * https://www.youtube.com/watch?v=d9oLS5hy0zU
+ */
+
 public class InventorySlot : MonoBehaviour
 {
     public Image icon;
@@ -8,17 +12,18 @@ public class InventorySlot : MonoBehaviour
 
     Item item;
 
-    public void AddItem (Item newItem)
+    // Add item to inventory, updating UI
+    public void AddItem(Item newItem)
 
     {
         item = newItem;
-
         icon.sprite = item.icon;
         icon.enabled = true;
         removeButton.interactable = true;
     }
 
-    public void ClearSlot ()
+    // remove icon of inventory
+    public void ClearSlot()
     {
         item = null;
         icon.sprite = null;
@@ -26,12 +31,14 @@ public class InventorySlot : MonoBehaviour
         removeButton.interactable = false;
     }
 
+    // remove item of inventory if clicking remove button
     public void OnRemoveButton()
     {
         Inventory.instance.Remove(item);
     }
 
-    public void UseItem ()
+    // calls base Use method
+    public void UseItem()
     {
         if (item != null)
         {

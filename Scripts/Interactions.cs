@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
+/* Code: Corinna Pfarr      */
+/* Counts interactions of every season and displays it in Outro */
 
 public class Interactions : MonoBehaviour
 {
@@ -30,7 +29,7 @@ public class Interactions : MonoBehaviour
         interactionCountSummer = 0;
         interactionCountAutumn = 0;
         interactionCountWinter = 0;
-    
+
     }
 
 
@@ -46,29 +45,6 @@ public class Interactions : MonoBehaviour
         autumnText.text = "" + autumn;
         wintertext.text = "" + winter;
 
-        /* TODO: Change Scene if all activities found
-        if (interactionCountSpring == 3)
-        {
-            theText.text = "All Activities found!";
-            SceneManager.LoadScene(2);
-        }
-        if (interactionCountSummer == 3)
-        {
-            theText.text = "All Activities found!";
-            SceneManager.LoadScene(3);
-        }
-        if (interactionCountSpring == 3)
-        {
-            theText.text = "All Activities found!";
-            SceneManager.LoadScene(4);
-        }
-        if (interactionCountSpring == 3)
-        {
-            theText.text = "All Activities found!";
-            SceneManager.LoadScene(5);
-        }
-
-    */
 
     }
 }

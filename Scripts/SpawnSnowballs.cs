@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+/* Code: Corinna Pfarr                            */
+/* Spawns pickable snowballs in winter */
 
 public class SpawnSnowballs : MonoBehaviour
 {
@@ -18,8 +19,6 @@ public class SpawnSnowballs : MonoBehaviour
         void addComponents(GameObject obj)
         {
             obj.AddComponent<ItemPickup>();
-
-
         }
 
         void randomice()
@@ -29,17 +28,18 @@ public class SpawnSnowballs : MonoBehaviour
             PlaceZ = Random.Range(20, 180);
         }
 
+        // instanciate snowball prefabs
         void instanciateSnowballs()
         {
             for (int i = 0; i < 15; i++)
-                {
+            {
                 randomice();
-                    GameObject top = Instantiate(snowball) as GameObject;
-                    top.transform.position = new Vector3(PlaceX, 10f, PlaceZ);
-                    addComponents(top);
-                }
+                GameObject top = Instantiate(snowball) as GameObject;
+                top.transform.position = new Vector3(PlaceX, 10f, PlaceZ);
+                addComponents(top);
+            }
 
         }
 
     }
- }
+}

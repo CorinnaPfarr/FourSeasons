@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-
-/* Code of Brackeys Tutorial */
+/* Code partly of Brackeys Youtube Tutorial 
+ * https://www.youtube.com/watch?v=d9oLS5hy0zU
+ * Corinna Pfarr added own methods: Throw / Eat / BuildSnowMan / FlowerBouquet
+ */
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -21,14 +21,13 @@ public class EquipmentManager : MonoBehaviour
     public Transform target;
     public Interactions interactionCountWinter;
     public Rigidbody rb;
+
     public Vector3 playerposition;
     public Vector3 snowBase;
     public Vector3 NewSnowBase;
     public Vector3 rotation;
-    private Vector3 endPosition;
+    public Vector3 endPosition;
 
-    public Text EatText;
-    
     Equipment[] currentEquipment;
 
     void Start()
@@ -37,13 +36,14 @@ public class EquipmentManager : MonoBehaviour
         currentEquipment = new Equipment[numSlots];
     }
 
+    // equips item
     public void Equip(Equipment newItem)
     {
         int slotIndex = (int)newItem.equipmentSlot;
         currentEquipment[slotIndex] = newItem;
-
     }
 
+    // throws item away from player
     public void Throw(Equipment newItem)
     {
         //get current position of player
@@ -67,31 +67,17 @@ public class EquipmentManager : MonoBehaviour
             // increases interactionCount for Level winter by 1
             Interactions.instance.interactionCountWinter += 1;
 
-            //BUG TODO: only increasing if thrown ONCE!
         }
     }
 
-    void instanciateSnowManItems()
+    // eats item, and shows text (COULDDOLATER: increasing healthbar)
+    public void Eat(Eatable newItem)
     {
-        // TODO : instanciate all SnowManItems here
+        Debug.Log(" Eat Item  ");
+
     }
 
-    public void Eat()
-        {
-
-        EatText = GetComponent<Text>();
-
-
-        if (EatText.enabled == false)
-        {
-            EatText.text = "Eating :) ... mhmhmm ....";
-            EatText.enabled = true;
-
-            Debug.Log(" only logs text, because can't figure out to show text :(  ");
-        }
-        }
-
-
+    // building a snowman 
     public void BuildSnowMan(SnowmanItems newItem)
     {
         int snowManCount = 0;
@@ -128,12 +114,11 @@ public class EquipmentManager : MonoBehaviour
         else if (newItem.name == "Twig")
         {
             //TODO: not hard code the position
-            NewSnowBase.x = snowBase.x +2f;
-            NewSnowBase.y = snowBase.y +2f;        // sets Snowball on top of SnowBase
+            NewSnowBase.x = snowBase.x + 2f;
+            NewSnowBase.y = snowBase.y + 2f;        // sets Snowball on top of SnowBase
             NewSnowBase.z = snowBase.z;
 
             endPosition = NewSnowBase;
-           
 
             GameObject snowItem = Resources.Load(newItem.name) as GameObject;     // find prefab in resources with same item name
             GameObject top = Instantiate(snowItem) as GameObject;                 // instanciate prefab
@@ -149,16 +134,13 @@ public class EquipmentManager : MonoBehaviour
                 Debug.Log(top.transform.position);
                 snowManCount++;
                 Debug.Log(snowManCount);
-
             }
-
-
         }
 
         else if (newItem.name == "Twig2")
         {
             //TODO: not hard code the position && set to right angle
-            NewSnowBase.x = snowBase.x + 2f ;
+            NewSnowBase.x = snowBase.x + 2f;
             NewSnowBase.y = snowBase.y - 2f; ;        // sets Snowball on top of SnowBase
             NewSnowBase.z = snowBase.z;
 
@@ -197,11 +179,12 @@ public class EquipmentManager : MonoBehaviour
 
     }
 
-    public void FlowerThing(FlowerItems newItem)
+    // creating a flower bouquet
+    public void FlowerBouquet(FlowerItems newItem)
     {
         Debug.Log("do something with flowers");
         Interactions.instance.interactionCountSpring += 1;
     }
-    }
+}
 
 

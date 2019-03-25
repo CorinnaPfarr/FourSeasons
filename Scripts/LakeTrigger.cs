@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
+/* Code: Corinna Pfarr                            */
+/* Interaction: Lake winter  */
 
 public class LakeTrigger : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class LakeTrigger : MonoBehaviour
            // LakeText.text = "You can't swim here.";
            // LakeText.enabled = true;
             Debug.Log("You can't swim here");       // logging because i can't make showing Text work :(
+
+            // increasing global interaction count winter by 1
             Interactions.instance.interactionCountWinter += 1;
             hasinteracted = true;
 

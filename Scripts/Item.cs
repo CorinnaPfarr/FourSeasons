@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item" , menuName = "Inventory/Item")]
+/* Code: Corinna Pfarr                            */
+/* Item Blueprint */
+
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
-    //blueprint for every item
+    // Blueprint for every item
     new public string name = "New Item";
     public Sprite icon = null;              // icon which shows in inventory 
 
+    // Base class of Use method
     public virtual void Use()
     {
         //Use Item

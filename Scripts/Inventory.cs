@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
+/* Code partly of Brackeys Youtube Tutorial 
+ * https://www.youtube.com/watch?v=9tePzyL6dgc&t=101s
+*/
 
 public class Inventory : MonoBehaviour
 {
-
     #region Singleton
 
     public static Inventory instance;
 
     // check if already an instance & set it to this
-    void Awake ()
+    void Awake()
     {
         if (instance != null)
         {
@@ -23,9 +25,8 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-
     //Callback when item gets added/removed
-    public delegate void OnItemChanged();   
+    public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
     public int space = 16;   // amount of inventory space
@@ -47,11 +48,11 @@ public class Inventory : MonoBehaviour
         //trigger callback
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
-    
-            return true;
+
+        return true;
     }
-            
-    public void Remove (Item item)
+
+    public void Remove(Item item)
     {
         items.Remove(item);     //Removes item
 

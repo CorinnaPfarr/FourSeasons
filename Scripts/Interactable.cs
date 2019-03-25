@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 
-/* Base class of all interactable Items	*/
+/* Code partly of Brackeys Youtube Tutorial 
+ * https://www.youtube.com/watch?v=9tePzyL6dgc&t=101s
+*/
 
 public class Interactable : MonoBehaviour
 {
 
     public float radius = 3f;               // how close player needs to get 
-    public Transform interactionTransform;  // The transform from where we interact in case you want to offset it
+    public Transform interactionTransform;  // The transform from where interact
 
-    bool isFocus = false;   // Is this interactable currently being focused?
-    Transform player;       // Reference to the player transform
+    bool isFocus = false;           // Is interactable currently focused?
+    Transform player;               // Reference to the player transform
 
-    bool hasInteracted = false; // Have we already interacted with the object?
+    bool hasInteracted = false;     // already interacted with the object
 
     public virtual void Interact()
     {
@@ -62,5 +64,5 @@ public class Interactable : MonoBehaviour
         Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
 
-   
+
 }

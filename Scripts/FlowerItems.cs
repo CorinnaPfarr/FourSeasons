@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Flower items : creating bouguet */
+/* Code: Corinna Pfarr             */
 
-[CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Flower")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Flower")]
 public class FlowerItems : Item
 {
     public EquipmentSlot equipmentSlot;
 
-
+    // overrides Use method for flower items
     public override void Use()
     {
         base.Use();
-        Debug.Log("will do something");
-        EquipmentManager.instance.FlowerThing(this);
-        Debug.Log("has done something");
+        Debug.Log("will build flower bouquet");
+        EquipmentManager.instance.FlowerBouquet(this);  // on click of item in inventory 
+        Debug.Log("has built flower bouquet");
         RemoveFromInventory();
 
     }

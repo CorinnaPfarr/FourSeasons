@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 
 
+/* Code: Corinna Pfarr        */
+/* Respawns if trigger is hit */
+
 public class Respawn : MonoBehaviour
 {
-    
     public GameObject FloatingText;
     public Transform player;
     public Transform respawnPoint;
-    
 
-   void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
         if (other == player)
         {
@@ -19,14 +21,14 @@ public class Respawn : MonoBehaviour
             {
                 ShowRespawnText();
             }
-        }   
+        }
     }
 
-   void ShowRespawnText ()
-        {
-            Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
-        }
-    
+    void ShowRespawnText()
+    {
+        Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
+    }
+
 
 
 }
